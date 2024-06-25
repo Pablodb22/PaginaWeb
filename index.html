@@ -21,14 +21,35 @@
                         <li><a><button id="zapatillas" class="boton-menu">Zapatillas</button></a></li>
                     </ul>
                 </li>
-                <li><button>Carrito</button></li>
+                <li><button id="botoncarrito">Carrito</button></li>
             </ul>
         </nav>
     </div>
     
-    <aside class="carrito">
-        <p>Carrito</p>
-    </aside>
+    <!--Carrito-->
+<div id="carrito" class="carrito">
+
+    <!-- Contenido del Carrito -->
+    <div class="carrito-contenido">
+      <span class="cerrar">×</span>
+
+      <div class="products-carrito" id="#items-carrito">
+        <div class="product-carrito">
+            <img class="carrito-foto" src="Fotos/pexels-cottonbro-4937449.jpg">  
+            <p>Pantalon2</p>
+            <p>1</p>
+            <p>21€</p>  
+            <button>+</button>              
+            <button>-</button>           
+        </div>       
+        <div class="total">
+            <p>Total 21€</p>
+            <button>Pagar</button>        
+        </div>    
+      </div>     
+
+    </div>
+  </div>
 
     <!--Aqui van los productos-->
     <div class="products" id="items"></div>

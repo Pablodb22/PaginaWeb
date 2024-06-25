@@ -60,6 +60,7 @@ const baseDeDatos = [
 const DOMitems = document.querySelector('#items');
 const botones=document.querySelectorAll('.boton-menu');
 
+/*Renderizar Productos*/ 
 function renderizarProductos(productoselegidos){
     DOMitems.innerHTML="";
     productoselegidos.forEach(producto => {
@@ -76,7 +77,7 @@ function renderizarProductos(productoselegidos){
     })
 }
 
-
+/*Menu*/
 botones.forEach(boton => {
     boton.addEventListener("click",(e) => {   
         if(e.currentTarget.id != "general"){
@@ -89,7 +90,33 @@ botones.forEach(boton => {
     })
 });
 
+/*Cuando te metas por primera vez a la pagina que aparezcan todos los productos*/
 window.addEventListener("load",renderizarProductos(baseDeDatos));
 
+
+var carrito = document.getElementById("carrito");
+
+
+var boton = document.getElementById("botoncarrito");
+
+
+var span = document.getElementsByClassName("cerrar")[0];
+
+//Cuando el usuario hace clic en el botón, abre el carrito 
+boton.onclick = function() {
+    carrito.style.display = "block";
+}
+
+//Cuando el usuario hace clic en la x, cierra el carrito
+span.onclick = function() {
+    carrito.style.display = "none";
+}
+
+//Cuando el usuario hace clic en cualquier lugar fuera del carrito, lo cierra
+window.onclick = function(event) {
+  if (event.target == carrito) {
+    carrito.style.display = "none";
+  }
+}
 
 

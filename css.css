@@ -92,9 +92,61 @@ body {
     flex: 3;
 }
 
-.carrito{
-    display: none;
+/*Carrito*/
+.carrito {
+    display: none; /* Inicialmente oculto */
+    position: fixed; /* Fijo en toda la pantalla */
+    z-index: 1; /* Situado encima de todo */
+    left: 0;
+    top: 0;  
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Habilitar scroll si necesario */
+    background-color: rgb(0,0,0); /* Color de fondo */
+    background-color: rgba(0,0,0,0.4); /* Negro con un poco de transparencia */
 }
+
+.carrito-foto {
+    width: 113px;
+    height: 170px;
+}
+/* Contenido del Carrito */
+.carrito-contenido {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% desde arriba y centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 45%; /* Ancho del contenido */
+}
+
+/* Botón para cerrar el Carrito */
+.cerrar {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cerrar:hover,
+.cerrar:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.product-carrito{
+    display: flex; 
+    align-items: center; 
+}
+
+.product-carrito img{
+    margin-right: 70px;
+}
+.product-carrito p{
+    margin-right: 70px;
+    margin-left: 70px;
+}
+
 
 /* Pie de página */
 footer {
