@@ -93,59 +93,38 @@ body {
 }
 
 /*Carrito*/
-.carrito {
-    display: none; /* Inicialmente oculto */
-    position: fixed; /* Fijo en toda la pantalla */
-    z-index: 1; /* Situado encima de todo */
-    left: 0;
-    top: 0;  
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Altura completa */
-    overflow: auto; /* Habilitar scroll si necesario */
-    background-color: rgb(0,0,0); /* Color de fondo */
-    background-color: rgba(0,0,0,0.4); /* Negro con un poco de transparencia */
+#carrito {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 600px;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: white;
 }
 
-.carrito-foto {
-    width: 113px;
-    height: 170px;
-}
-/* Contenido del Carrito */
-.carrito-contenido {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% desde arriba y centrado */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 45%; /* Ancho del contenido */
+.table {
+    margin: 10px 0; /* Agrega margen arriba y abajo de la tabla */
 }
 
-/* Botón para cerrar el Carrito */
-.cerrar {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.table th, .table td {
+    padding: 10px; /* Agrega padding a las celdas de la tabla */
 }
 
-.cerrar:hover,
-.cerrar:focus {
-    color: black;
-    text-decoration: none;
+.imagen-carrito{
+    width: 117px;
+    height: 117px;
+}
+
+/* Estilo para el botón de cierre */
+#cerrarCarrito {
+    background: none;
+    border: none;
+    font-size: 20px;
     cursor: pointer;
 }
 
-.product-carrito{
-    display: flex; 
-    align-items: center; 
-}
-
-.product-carrito img{
-    margin-right: 70px;
-}
-.product-carrito p{
-    margin-right: 70px;
-    margin-left: 70px;
-}
 
 
 /* Pie de página */

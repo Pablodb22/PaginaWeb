@@ -57,10 +57,12 @@ const baseDeDatos = [
 }
 ]
 
+const carrito = [   
+];
 const DOMitems = document.querySelector('#items');
 const botones=document.querySelectorAll('.boton-menu');
 
-/*Renderizar Productos*/ 
+/*Funcion renderizar Productos*/ 
 function renderizarProductos(productoselegidos){
     DOMitems.innerHTML="";
     productoselegidos.forEach(producto => {
@@ -70,12 +72,84 @@ function renderizarProductos(productoselegidos){
         <img src="${producto.img}">
         <h3 id=${producto.id}>${producto.nombre}</h3>
         <p>${producto.descripcion}</p>
-        <p>${producto.precio}€</p>
-        <button>Añadir Carrito</button>
+        <p id="precio">${producto.precio}€</p>
+        <button id="agregar">Añadir Carrito</button>
         </div>`;
         DOMitems.append(div);
     })
 }
+
+/*Funcion para hacer carrito visible*/
+function mostrarCarrito() {
+    var x = document.getElementById("carrito");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        renderizarCarrito();
+    } else {
+        x.style.display = "none";
+       
+    }
+}
+/*Funcion renderizar Carrito*/
+function renderizarCarrito(){
+    const tbody = document.querySelector('.carrito-products');
+    
+    tbody.innerHTML = '';
+       
+    carrito.forEach(producto => {
+ 
+        const tr = document.createElement('tr');
+        tr.classList.add('carrito-product');
+          
+        tr.innerHTML = `
+            <td><img id="fotoProducto" src="${producto.foto}" class="imagen-carrito"></td>
+            <td id="nombreProducto">${producto.nombre}</td>
+            <td id="cantidadProducto">${producto.cantidad}</td>
+            <td id="precioProducto">${producto.precio}</td>
+        `;
+            
+        tbody.appendChild(tr);
+    });
+   
+    //Modificar precio final
+   document.getElementById('precioTotal').textContent = carrito.reduce((total, producto) => total + parseFloat(producto.precio), 0) + '€';
+    }
+    
+/*Funcion agregar al carrito*/
+function agregarCarrito(e) {
+    const boton = e.target;
+    const item = boton.closest('.product');
+    const itemTitulo = item.querySelector('h3').textContent;
+    const itemPrecio =document.getElementById('precio').textContent;
+    const itemImg = item.querySelector('img').src;
+
+    const nuevoItem = {
+        nombre: itemTitulo,
+        precio: itemPrecio,
+        foto: itemImg,
+        cantidad: 1
+    };
+
+    const existeEnCarrito = carrito.some(itemCarrito => itemCarrito.nombre === nuevoItem.nombre);
+
+    if (existeEnCarrito) {
+        // Si el producto ya existe en el carrito, incrementamos su cantidad
+        carrito.forEach(itemCarrito => {
+            if (itemCarrito.nombre === nuevoItem.nombre) {
+                itemCarrito.cantidad++;
+            }
+        });
+    } else {
+        // Si el producto no existe en el carrito, lo agregamos
+        carrito.push(nuevoItem);
+    }
+
+    renderizarCarrito();
+}
+
+// Agregamos el evento click a cada botón de agregar al carrito
+DOMitems.addEventListener('click', agregarCarrito);
+
 
 /*Menu*/
 botones.forEach(boton => {
@@ -90,33 +164,14 @@ botones.forEach(boton => {
     })
 });
 
+// JavaScript para ocultar el carrito
+document.getElementById('cerrarCarrito').addEventListener('click', function() {
+    document.getElementById('carrito').style.display = 'none';
+});
+
+
 /*Cuando te metas por primera vez a la pagina que aparezcan todos los productos*/
 window.addEventListener("load",renderizarProductos(baseDeDatos));
 
-
-var carrito = document.getElementById("carrito");
-
-
-var boton = document.getElementById("botoncarrito");
-
-
-var span = document.getElementsByClassName("cerrar")[0];
-
-//Cuando el usuario hace clic en el botón, abre el carrito 
-boton.onclick = function() {
-    carrito.style.display = "block";
-}
-
-//Cuando el usuario hace clic en la x, cierra el carrito
-span.onclick = function() {
-    carrito.style.display = "none";
-}
-
-//Cuando el usuario hace clic en cualquier lugar fuera del carrito, lo cierra
-window.onclick = function(event) {
-  if (event.target == carrito) {
-    carrito.style.display = "none";
-  }
-}
 
 

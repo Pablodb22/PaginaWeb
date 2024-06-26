@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Elegante</title>
     <link rel="stylesheet" href="css.css">
+    
 </head>
 <body>
     <div class="header">
@@ -21,36 +22,35 @@
                         <li><a><button id="zapatillas" class="boton-menu">Zapatillas</button></a></li>
                     </ul>
                 </li>
-                <li><button id="botoncarrito">Carrito</button></li>
+                <li><button onclick="mostrarCarrito()" id="botoncarrito">Carrito</button></li>
             </ul>
         </nav>
     </div>
     
-    <!--Carrito-->
-<div id="carrito" class="carrito">
-
-    <!-- Contenido del Carrito -->
-    <div class="carrito-contenido">
-      <span class="cerrar">×</span>
-
-      <div class="products-carrito" id="#items-carrito">
-        <div class="product-carrito">
-            <img class="carrito-foto" src="Fotos/pexels-cottonbro-4937449.jpg">  
-            <p>Pantalon2</p>
-            <p>1</p>
-            <p>21€</p>  
-            <button>+</button>              
-            <button>-</button>           
-        </div>       
-        <div class="total">
-            <p>Total 21€</p>
-            <button>Pagar</button>        
-        </div>    
-      </div>     
-
+<!--Carrito-->   
+<div id="carrito" class="card">
+    <div class="card-body">
+        <button id="cerrarCarrito" style="position: absolute; right: 10px; top: 10px;">X</button>
+        <table class="table">
+            <thead>
+                <tr class="carrito-info">
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <!-- Este es el elemento donde se insertarán los productos del carrito -->
+            <tbody class="carrito-products"></tbody>
+        </table>
+        <hr>
+        <h2 id="precioTotal"></h2> <!-- Este elemento mostrará el precio total -->
+        <button onclick="comprarTodo()">Comprar Todo</button>
     </div>
-  </div>
+</div>
 
+
+    
     <!--Aqui van los productos-->
     <div class="products" id="items"></div>
 
