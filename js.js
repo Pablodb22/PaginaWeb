@@ -146,7 +146,10 @@ function agregarCarrito(e) {
 
     renderizarCarrito();
 }
-
+function comprarCarrito(e){
+    const boton = e.target;
+    
+}
 // Agregamos el evento click a cada botón de agregar al carrito
 DOMitems.addEventListener('click', agregarCarrito);
 
